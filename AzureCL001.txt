@@ -1,0 +1,13 @@
+# Create a resource group and an managed disk using CLI
+$ LOCATION=$(az group show --name 'Replace-rg-name' --query location --out tsv
+$ $RGNAME='Replace-rg-name'
+$ az group create --name $RGNAME --location $LOCATION
+$ az group show --name $RGNAME --location $LOCATION
+
+# Create a new managed disk with the same properties.
+$ DISKNAME='az104-088d-disk1'
+$ az disk create --reource-group $RGNAME --name $DISKNAME --sku 'Standard LRS' --size-gb 32
+$ az disk show --resource-group $RGNAME --name $DISKNAME
+
+# To increase the size-gbof Azure managed disk to 64GB.
+$ az disjk update --resource-group $RGNAME --name $DISKNAME --size-gb 64
